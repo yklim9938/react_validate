@@ -2,8 +2,11 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Form from '../components/Form'
 import Link from 'next/link'
+import ErrorMessage from '../components/ErrorMessage'
+import { useState } from 'react'
 
 export default function Home() {
+  const [nameVal, setNameVal] = useState('')
   const submitHandler = (e) => {
     console.log(e)
   }
@@ -21,7 +24,8 @@ export default function Home() {
           <Form onSubmit={submitHandler}>
             <div className="mb-4">
               <label>Name</label>
-              <input type="text" required minLength="2" className="orca form-control"></input>
+              <input type="text" className="form-control" onInput={(e) => setNameVal(e.target.value)}></input>
+              <ErrorMessage required minlength={2} value={nameVal}></ErrorMessage>
             </div>
             <div className="mb-4">
               <label>Select</label>

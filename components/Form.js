@@ -4,7 +4,6 @@ import validation from '../assets/js/validation'
 const Form = ({children, onSubmit}) => {
     const formRef = useRef()
     const [inputs, setInputs] = useState([])
-    const [inputAttributes, setInputAttributes] = useState([])
 
     const validateInput = (input) => {
         let value = input.value
@@ -66,6 +65,8 @@ const Form = ({children, onSubmit}) => {
         inputs.forEach(i => {
             validateInput(i)
         })
+
+        console.log(children)
 
         if (typeof onSubmit == 'function') {
             let isValid = true
